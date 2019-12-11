@@ -30,3 +30,18 @@ select o.id as OrderID
 from [Order] as o
 join Customer as c on o.CustomerId = c.id
 join Employee as e on o.EmployeeId = e.id;
+
+
+-- Display CategoryName and a new column called Count that shows how many products are in each category. Shows 9 records.
+SELECT CategoryName
+	, sum(p.productId) as count
+FROM [Categories] as c
+JOIN Products as p on p.CategoryId = c.CategoryId
+Group by p.CategoryId;
+
+-- Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+SELECT OrderID
+	, sum(ProductID) as ItemCount
+FROM [OrderDetails]
+GROUP by OrderId;
+
