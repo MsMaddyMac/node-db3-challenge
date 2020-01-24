@@ -114,4 +114,17 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// Stretch addStep to scheme
+router.post('/:id/addStep', (req, res) => {
+  const step = req.body;
+  const scheme_id = req.params.id;
+
+  Schemes.findById(scheme_id)
+  
+  .insert(step, scheme_id)
+  .then(ids =>  {
+    const id = ids[0]
+  })
+})
+
 module.exports = router;
